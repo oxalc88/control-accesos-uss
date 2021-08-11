@@ -40,13 +40,24 @@ let vehiculos = [
     }
 ];
 
+//para autorizar placa
 const check = document.getElementById('check');
+
+//para obtener datos persona
+
+const documento = document.getElementById('documento');
+const valorDocumento = documento.value;
+
+
+// para obtener datos del vehiculo
 const vehicle = document.getElementById('vehicle');
+const getVehicle = vehicle.value;
 
+// para definir manejos de consulta y registro
 const registrar = document.getElementById('registro');
-//const documento = document.getElementById('documento');
+const consulta = document.getElementById('consulta');
 
-const placa = vehicle.value;
+
 
 // para habilitar si entra con vehiculo
 function on (){
@@ -59,27 +70,31 @@ function on (){
     }
 }
 
-// para buscar la persona y el vehículo
-
-let buscarDocumento = function(persona) {
-    let consulta = document.getElementById('documento');
-    let valorDocumento = consulta.value;
+// para buscar la persona 
+let buscarDocumento = function(persona, documento, valorDocumento) {
     return persona.documento = valorDocumento
 };
 
-let visita = personas.find(buscarDocumento)
+function obtenerVisita (){
+    let visita = personas.find(buscarDocumento)
+    return console.log(visita)
+}
 
-// function prueba () {
-//     if (!visita){
-//         alert ("el documento " + valorDocumento + "no es valido" )
-//     }else{
-//         alert ("el documento " + valorDocumento + " es valido" )
-//     }
-// }
+// para buscar vehiculo
+let buscarVehiculo = function(vehiculo, vehicle, getVehicle) {
+    return vehiculo.placa = getVehicle
+};
 
+function obtenerVehiculo (){
+    let auto = vehiculos.find(buscarVehiculo)
+    return console.log(auto)
+}
 
-
+function acceso (){
+    obtenerVisita();
+    obtenerVehiculo();
+}
 
 check.addEventListener("click", on);
-consulta.addEventListener("click", console.log(visita));
+consulta.addEventListener("click", obtenerVisita);
 
