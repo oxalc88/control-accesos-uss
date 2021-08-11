@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Permiso de Ingreso</title>
+</head>
+<body class="login">
+  <header class="header__login">
+        <h1>Universal Security Solutions</h1>
+  </header>
+    <section class="login__container">
+        <h2 id="resultado">Aceptado o no</h2>
+        <div class="login__container--success">
+            <div class="success" id="nombre">Juan Perez</div>
+            <div class="success" id="sctr">SCTR Vigente hasta ...</div>
+            <div class="success" id="empresa">Jibarito Productions </div>
+            <div class="success" id="autorizacion">Autorizado por ...</div>
+            <div class="success" id="area-acceso">Aréa: ...</div>
+            <div class="success" id="placa">Vehiculo BYD ...</div>
+            <div class="success" id="auto-color">Color ...</div>
+            <div class="success" id="soat">Soat Vigente hasta ...</div>
+        </div>
+        <div class="login__container--acceso">
+            <button type="button" class="button button--in" id="ingreso">Ingreso</button>
+            <button class="button button--out" id="volver">Salida</button>
+            <button class="button" id="volver">Retornar</button>
+        </div>
+    </section>
+    <footer class="footer">
+        <a href="/">Términos de Uso</a>
+        <a href="/">Declaración de Privacidad</a>
+        <a href="/">Centro de Ayuda</a>
+    </footer>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+    <script src="./js/accesos.js"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+// Funciones de Accesos
 let personas = [
     {
         nombre: 'Juan',
@@ -24,6 +25,9 @@ let personas = [
 
 let vehiculos = [
     {
+        marca:'Nissan',
+        modelo: 'Sentra',
+        color: 'rojo',
         placa:'B4J784',
         fin_soat: '31/08/2023',
         empresa: 'Ransa'
