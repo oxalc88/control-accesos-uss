@@ -1,0 +1,31 @@
+@charset "UTF-8";
+$azul: #235ba3;
+$naranja: #f37435;
+$white:#fefefe;
+$opaco: rgba(255, 255, 255, 0.1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Mulish', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+    text-transform: uppercase;
+    line-height: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+
+p{
+    line-height: 2em;
+}
+
+
+
+
+
+

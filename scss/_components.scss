@@ -1,0 +1,177 @@
+//login page
+
+
+header img{
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.header__menu{
+    margin-right: 30px;
+}
+.header__menu ul{
+    display: none;
+    list-style: none;
+    padding: 0px;
+    position: absolute;
+    width: 100px;
+    text-align: right;
+    margin: 0px 0px 0px -14px;
+}
+.header__menu:hover ul, ul:hover{
+    display: block;
+}
+.header__menu li{
+    margin: 10px 0px;
+}
+.header__menu li a{
+    color: $white;
+    text-decoration: none;
+}
+.header__menu li a:hover {
+    text-decoration: underline;
+}
+.header__menu--profile{
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+.header__menu--profile img{
+    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+}
+.header__menu--profile p{
+    margin: 0px;
+    color: $white;
+}
+
+.main__title{
+    color: $white;
+    font-size: 25px;
+    margin: 15px;
+}
+.categories_title{
+    color: $white;
+    font-size: 16px;
+    position: absolute;
+    padding-left: 30px;
+    width: 100%;
+}
+.input{
+    background-color: $opaco;
+    border: 2px solid $white;
+    border-radius: 25px;
+    color: $white;
+    font-family: 'Mulish', sans-serif;
+    height: 50px;
+    padding: 0px 20px;
+    width: 70%;
+    outline: none;
+}
+::placeholder{
+    color: $white;
+}
+
+
+/* Styles login page */
+
+.header__login{
+    background-color: none;
+    color: $white;
+}
+
+.login__container--form{
+    display: flex;
+    flex-direction: column;
+}
+.login__container--form label{
+    font-size: 14px;
+}
+.login__container--remember-me, .login__container--access-vehicle{
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.login__container--remember-me a{
+    color: $white;
+    font-size: 14px;
+    text-decoration: none;
+}
+.login__container--remember-me a:hover{
+    text-decoration: underline;
+}
+.login__container--social-media > div{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.login__container--social-media > div > img{
+    width: 30px;
+    margin-right: 10px;
+}
+.login__container--register{
+    font-size: 14px;
+}
+.login__container--register a{
+    font-size: 16px;
+    color: $white;
+    font-weight: bold;
+    text-decoration: none;
+}
+.login__container--register a:hover{
+    text-decoration: underline;
+}
+.input--login{
+    background-color: transparent;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 2px solid $white;
+    font-size: 16px;
+    font-family: 'Mulish', sans-serif;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+}
+::placeholder{
+    color: $white;
+}
+
+.footer a{
+    color: $white;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+.footer a:hover{
+    text-decoration: underline;
+}
+// estilos accesso
+.login__container--access-vehicle{
+    margin-bottom: 30px;
+    align-items: space-between;
+    justify-content: flex-end;
+}
+
+.login__container--access-vehicle p{
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+    .login__container{
+       background-color: transparent;
+       border: none;
+       padding: 0px;
+       width: 100%;
+    }
+   .footer a{
+       padding-left: 0px;
+   }
+}
