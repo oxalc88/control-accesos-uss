@@ -22,7 +22,7 @@ let personas = [
     }
 ];
 
-let vehículos = [
+let vehiculos = [
     {
         placa:'B4J784',
         fin_soat: '31/08/2023',
@@ -42,10 +42,10 @@ let vehículos = [
 
 const check = document.getElementById('check');
 const vehicle = document.getElementById('vehicle');
-const consulta = document.getElementById('consulta');
+
 const registrar = document.getElementById('registro');
-const documento = document.getElementById('documento');
-const valorDocumento = documento.value;
+//const documento = document.getElementById('documento');
+
 const placa = vehicle.value;
 
 // para habilitar si entra con vehiculo
@@ -61,13 +61,23 @@ function on (){
 
 // para buscar la persona y el vehículo
 
-const persona = function(valorDocumento) {
-    return personas.documento === valorDocumento
+let buscarDocumento = function(persona) {
+    let consulta = document.getElementById('documento');
+    let valorDocumento = consulta.value;
+    return persona.documento = valorDocumento
 };
 
-const visita = personas.find(persona)
+let visita = personas.find(buscarDocumento)
 
-console.log(visita)
+// function prueba () {
+//     if (!visita){
+//         alert ("el documento " + valorDocumento + "no es valido" )
+//     }else{
+//         alert ("el documento " + valorDocumento + " es valido" )
+//     }
+// }
+
+
 
 
 check.addEventListener("click", on);
