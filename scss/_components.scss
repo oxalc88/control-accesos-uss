@@ -62,7 +62,6 @@ header img{
     background-color: $opaco;
     border: 2px solid $white;
     border-radius: 25px;
-    color: $white;
     font-family: 'Mulish', sans-serif;
     height: 50px;
     padding: 0px 20px;
@@ -71,6 +70,10 @@ header img{
 }
 ::placeholder{
     color: $white;
+}
+input:disabled {
+    background: $disabled;
+    color: $disabled;
 }
 
 

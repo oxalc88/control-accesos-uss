@@ -137,7 +137,6 @@ header img {
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid #fefefe;
   border-radius: 25px;
-  color: #fefefe;
   font-family: 'Mulish', sans-serif;
   height: 50px;
   padding: 0px 20px;
@@ -146,6 +145,10 @@ header img {
 
 ::placeholder {
   color: #fefefe; }
+
+input:disabled {
+  background: #ccc;
+  color: #ccc; }
 
 /* Styles login page */
 .header__login {
