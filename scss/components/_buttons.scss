@@ -12,8 +12,14 @@
     letter-spacing: 1px;
     margin: 10px 0px;
 }
-.button-consulta{
+.button--consulta{
     background-color: $naranja;
+}
+.button--out{
+  background-color: $out;
+}
+.button--in{
+  background-color: $in;
 }
 
 /* Boton Switch */

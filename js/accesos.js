@@ -32,7 +32,7 @@ let vehiculos = [
         color: 'Rojo',
         placa:'B4J784',
         fin_soat: '31/08/2023',
-        empresa: 'Ransa'
+        empresa_vehiculo: 'Ransa'
     },
     {
         marca:'JAC',
@@ -40,7 +40,7 @@ let vehiculos = [
         color: 'Blanco',
         placa:'O5B764',
         fin_soat: '31/08/2020',
-        empresa: 'Luna'
+        empresa_vehiculo: 'Luna'
     },
     {
         marca:'Toyota',
@@ -48,7 +48,7 @@ let vehiculos = [
         color: 'Azul',
         placa:'V4J654',
         fin_soat: '07/09/2024',
-        empresa: 'Jupiter'
+        empresa_vehiculo: 'Jupiter'
     }
 ];
 
@@ -84,23 +84,41 @@ function on (){
 function obtenerVisita (){
     const valorDocumento = documento.value;
     const visita = personas.find(persona => persona.documento === valorDocumento);
-    return console.log(visita);    
+    //let addPeople = access.push(visita)
+    return visita;
+    //return console.log(visita);    
 }
 
 // para buscar vehiculo
 function obtenerVehiculo (){
     const getVehicle = vehicle.value;
     let auto = vehiculos.find(vehiculo => vehiculo.placa === getVehicle)
-    return console.log(auto)
+    //let addVehicle = access.push(auto)
+    return auto;
+}
+
+// para llenar con jquery
+function relleno (_e){
+    $("#permisos").append(`<div><h3>Autorizado</h3>
+    <p>${_e.nombre} ${_e.apellido}</p>
+    <p>${_e.documento}</p>
+    <p>${_e.empresa}</p>
+    <p>SCTR vigente hasta: ${_e.fin_sctr}</p>
+    <p>${_e.placa}</p>
+    <p>${_e.marca}</p>
+    <p>${_e.modelo}</p>
+    <p>${_e.color}</p>
+    <p>Pertenece${_e.empresa_vehiculo}</p>
+    </div>`);
 }
 
 function acceso (){
-    let visita1 = obtenerVisita();
-    let auto1 = obtenerVehiculo();
-    //let access = auto1.concat(visita1);
-    console.log(visita1);
-    console.log(auto1);
-    //console.log(access);
+    let addPersona = obtenerVisita();
+    let addAuto = obtenerVehiculo();
+    let entrada = {...addPersona, ...addAuto};
+    relleno(entrada);
+    window.location = '/permiso.html'
+    return console.log(entrada);
 }
 
 check.addEventListener("click", on);
