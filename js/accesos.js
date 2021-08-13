@@ -97,6 +97,12 @@ function obtenerVehiculo (){
     return auto;
 }
 
+//para borrar
+function erase(){
+    const eliminar = document.getElementById('access-container');
+    const form = document.getElementById('form');
+    eliminar.removeChild(form)
+}
 // para llenar con jquery
 function relleno (_e){
     $("#permisos").append(`<div><h3>Autorizado</h3>
@@ -112,12 +118,17 @@ function relleno (_e){
     </div>`);
 }
 
+function mostrarPermiso(){
+    window.location.href = '/permiso.html';
+}
+
 function acceso (){
     let addPersona = obtenerVisita();
     let addAuto = obtenerVehiculo();
     let entrada = {...addPersona, ...addAuto};
+    erase();
     relleno(entrada);
-    window.location = '/permiso.html'
+    // mostrarPermiso();
     return console.log(entrada);
 }
 
