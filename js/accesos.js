@@ -126,10 +126,6 @@ function relleno (_e){
     <button class="button button--volver" id="volver">Regresar a Consulta
     </button>
      </div>`);
-    enter();
-    out();
-    ingreso.addEventListener('click', enter);
-    salida.addEventListener('click', out);
 }
 
 //para borrar los estilos del formulario y agregar autorización de entrada
@@ -140,6 +136,7 @@ function erase_autorization(){
 }
 function autorizado_entrada(){
     const ingreso = document.getElementById('in');
+    ingreso.addEventListener('click', enter);
     $("#acceso-visita").append(`
     <p>Bienvenido</p>
     <button class="button button--consulta" id="volver">Regresar
@@ -148,6 +145,7 @@ function autorizado_entrada(){
 }
 function autorizado_salida(){
     const salida = document.getElementById('out')
+    salida.addEventListener('click', out);
     $("#acceso-visita").append(`
     <p>Muchas Gracias por su visita</p>
     <button class="button button--consulta" id="volver">Regresar a Consulta
@@ -156,7 +154,7 @@ function autorizado_salida(){
 }
 
 function enter (){
-    let registro_visita = JSON.parse(entradaJSON);
+    let registro_visita = JSON.parse(localStorage.getItem("visitor"));
     let addPeople = registro_visita.push(access_entrada);
     erase_autorization();
     autorizado_entrada();
@@ -164,7 +162,7 @@ function enter (){
 }
 
 function out (){
-    let registro_visita = JSON.parse(entradaJSON);
+    let registro_visita = JSON.parse(localStorage.getItem("visitor"));
     let removePeople = registro_visita.push(access_salida);
     erase_autorization();
     autorizado_salida();
