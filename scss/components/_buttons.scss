@@ -1,5 +1,5 @@
 //boton general
-.button{
+@mixin button{
     background-color:$opaco;
     border: none;
     border-radius: 25px;
@@ -13,13 +13,26 @@
     margin: 10px 0px;
 }
 .button--consulta{
-    background-color: $naranja;
+  @include button;  
+  background-color: $naranja;
+    
+}
+.button--registro{
+  @include button;
 }
 .button--out{
+  @include button;
   background-color: $out;
+  width: 120px;
 }
 .button--in{
+  @include button;
   background-color: $in;
+  width: 120px;
+}
+.button--volver{
+  @include button;
+  width: 250px;
 }
 
 /* Boton Switch */

@@ -1,5 +1,6 @@
 // Funciones de Accesos
-let access = [];
+let access_entrada = [];
+let access_salida = [];
 
 let personas = [
     {
@@ -68,7 +69,6 @@ const registrar = document.getElementById('registro');
 const consulta = document.getElementById('consulta');
 
 
-
 // para habilitar si entra con vehiculo
 function on (){
     if (check.checked == true) {
@@ -84,7 +84,6 @@ function on (){
 function obtenerVisita (){
     const valorDocumento = documento.value;
     const visita = personas.find(persona => persona.documento === valorDocumento);
-    //let addPeople = access.push(visita)
     return visita;
     //return console.log(visita);    
 }
@@ -97,7 +96,7 @@ function obtenerVehiculo (){
     return auto;
 }
 
-//para borrar
+//para borrar los estilos de la consulta
 function erase(){
     const eliminar = document.getElementById('access-container');
     const form = document.getElementById('form');
@@ -105,31 +104,82 @@ function erase(){
 }
 // para llenar con jquery
 function relleno (_e){
-    $("#permisos").append(`<div><h3>Autorizado</h3>
-    <p>${_e.nombre} ${_e.apellido}</p>
-    <p>${_e.documento}</p>
-    <p>${_e.empresa}</p>
+    $("#permisos").append(`<section class="success"><h3>Resultado: Autorizado</h3>
+    <p>Visitante: ${_e.nombre} ${_e.apellido}</p>
+    <p>Documento N° ${_e.documento}</p>
+    <p>Empresa: ${_e.empresa}</p>
     <p>SCTR vigente hasta: ${_e.fin_sctr}</p>
-    <p>${_e.placa}</p>
-    <p>${_e.marca}</p>
-    <p>${_e.modelo}</p>
-    <p>${_e.color}</p>
-    <p>Pertenece${_e.empresa_vehiculo}</p>
-    </div>`);
+    <h3>Datos del Vehículo</h3>
+    <p>Placa: ${_e.placa}</p>
+    <p>Marca: ${_e.marca}</p>
+    <p>Modelo: ${_e.modelo}</p>
+    <p>Color: ${_e.color}</p>
+    <p>Pertenece a: ${_e.empresa_vehiculo}</p>
+    </section>
+    <section class="acceso">
+    <button class="button button--in" id="ingreso">Ingreso
+    </button>
+    <button class="button button--out" id="out">Salida
+    </button>
+     </section>
+     <div>
+    <button class="button button--volver" id="volver">Regresar a Consulta
+    </button>
+     </div>`);
+    enter();
+    out();
+    ingreso.addEventListener('click', enter);
+    salida.addEventListener('click', out);
 }
 
-function mostrarPermiso(){
-    window.location.href = '/permiso.html';
+//para borrar los estilos del formulario y agregar autorización de entrada
+function erase_autorization(){
+    const eliminar = document.getElementById('access-container');
+    const permisos = document.getElementById('permisos');
+    eliminar.removeChild(permisos);
+}
+function autorizado_entrada(){
+    const ingreso = document.getElementById('in');
+    $("#acceso-visita").append(`
+    <p>Bienvenido</p>
+    <button class="button button--consulta" id="volver">Regresar
+    </button>
+    `)
+}
+function autorizado_salida(){
+    const salida = document.getElementById('out')
+    $("#acceso-visita").append(`
+    <p>Muchas Gracias por su visita</p>
+    <button class="button button--consulta" id="volver">Regresar a Consulta
+    </button>
+    `)
+}
+
+function enter (){
+    let registro_visita = JSON.parse(entradaJSON);
+    let addPeople = registro_visita.push(access_entrada);
+    erase_autorization();
+    autorizado_entrada();
+    return console.log(addPeople)
+}
+
+function out (){
+    let registro_visita = JSON.parse(entradaJSON);
+    let removePeople = registro_visita.push(access_salida);
+    erase_autorization();
+    autorizado_salida();
+    return console.log(removePeople)
 }
 
 function acceso (){
     let addPersona = obtenerVisita();
     let addAuto = obtenerVehiculo();
     let entrada = {...addPersona, ...addAuto};
+    let entradaJSON = JSON.stringify(entrada);
+    localStorage.setItem('visitor', entradaJSON)
     erase();
     relleno(entrada);
-    // mostrarPermiso();
-    return console.log(entrada);
+    return console.log(entradaJSON);
 }
 
 check.addEventListener("click", on);

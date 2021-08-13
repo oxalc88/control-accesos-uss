@@ -234,6 +234,14 @@ input:disabled {
   margin-right: 15px;
   font-size: 16px; }
 
+.success h3 {
+  margin-top: 15px; }
+
+.acceso {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; }
+
 @media only screen and (max-width: 600px) {
   .login__container {
     background-color: transparent;
@@ -243,7 +251,21 @@ input:disabled {
   .footer a {
     padding-left: 0px; } }
 
-.button {
+.button--consulta {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 25px;
+  color: #fefefe;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Mulish', sans-serif;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+  background-color: #f37435; }
+
+.button--registro {
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 25px;
@@ -256,14 +278,49 @@ input:disabled {
   letter-spacing: 1px;
   margin: 10px 0px; }
 
-.button--consulta {
-  background-color: #f37435; }
-
 .button--out {
-  background-color: #D83232; }
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 25px;
+  color: #fefefe;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Mulish', sans-serif;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+  background-color: #D83232;
+  width: 120px; }
 
 .button--in {
-  background-color: #419E6A; }
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 25px;
+  color: #fefefe;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Mulish', sans-serif;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+  background-color: #419E6A;
+  width: 120px; }
+
+.button--volver {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 25px;
+  color: #fefefe;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Mulish', sans-serif;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 10px 0px;
+  width: 250px; }
 
 /* Boton Switch */
 .switch {

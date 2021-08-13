@@ -167,6 +167,18 @@ input:disabled {
     font-size: 16px;
 }
 
+// estilos cambio de pagina a resultado
+
+.success h3{
+    margin-top: 15px;
+}
+
+.acceso{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 @media only screen and (max-width: 600px) {
     .login__container{
        background-color: transparent;
