@@ -67,6 +67,7 @@ const vehicle = document.getElementById('vehicle');
 // para definir manejos de consulta y registro
 const registrar = document.getElementById('registro');
 const consulta = document.getElementById('consulta');
+const eliminar = document.getElementById('access-container');
 
 
 // para habilitar si entra con vehiculo
@@ -98,7 +99,7 @@ function obtenerVehiculo (){
 
 //para borrar los estilos de la consulta
 function erase(){
-    const eliminar = document.getElementById('access-container');
+    //const eliminar = document.getElementById('access-container');
     const form = document.getElementById('form');
     eliminar.removeChild(form)
 }
@@ -128,48 +129,7 @@ function relleno (_e){
      </div>`);
 }
 
-//para borrar los estilos del formulario y agregar autorización de entrada
-function erase_autorization(){
-    const eliminar = document.getElementById('access-container');
-    const permisos = document.getElementById('permisos');
-    eliminar.removeChild(permisos);
-}
-function autorizado_entrada(){
-    const ingreso = document.getElementById('in');
-    ingreso.addEventListener('click', enter);
-    $("#acceso-visita").append(`
-    <p>Bienvenido</p>
-    <button class="button button--consulta" id="volver">Regresar
-    </button>
-    `)
-}
-function autorizado_salida(){
-    const salida = document.getElementById('out')
-    salida.addEventListener('click', out);
-    $("#acceso-visita").append(`
-    <p>Muchas Gracias por su visita</p>
-    <button class="button button--consulta" id="volver">Regresar a Consulta
-    </button>
-    `)
-}
-
-function enter (){
-    let registro_visita = JSON.parse(localStorage.getItem("visitor"));
-    let addPeople = registro_visita.push(access_entrada);
-    erase_autorization();
-    autorizado_entrada();
-    return console.log(addPeople)
-}
-
-function out (){
-    let registro_visita = JSON.parse(localStorage.getItem("visitor"));
-    let removePeople = registro_visita.push(access_salida);
-    erase_autorization();
-    autorizado_salida();
-    return console.log(removePeople)
-}
-
-function acceso (){
+function consultar_visitante (){
     let addPersona = obtenerVisita();
     let addAuto = obtenerVehiculo();
     let entrada = {...addPersona, ...addAuto};
@@ -180,6 +140,16 @@ function acceso (){
     return console.log(entradaJSON);
 }
 
-check.addEventListener("click", on);
-consulta.addEventListener("click", acceso);
+function ingrerar_visita(relleno){
+    //const eliminar = document.getElementById('access-container');
+    const permiso_ingreso = document.getElementById('permisos');
+    eliminar.removeChild(permiso_ingreso);
+    return function(){
+    const registro_ingreso = document.getElementById('ingreso');
+    registro_ingreso.addEventListener("click", )
+}
+}
 
+check.addEventListener("click", on);
+consulta.addEventListener("click", consultar_visitante);
+registro_ingreso.addEventListener("click", ingresar_visita)
