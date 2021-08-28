@@ -1,3 +1,5 @@
+// import { functionsIn } from "lodash";
+
 // Funciones de Accesos
 let access_entrada = [];
 let access_salida = [];
@@ -85,27 +87,24 @@ function on (){
 function obtenerVisita (){
     const valorDocumento = documento.value;
     const visita = personas.find(persona => persona.documento === valorDocumento);
-    return visita;
-    //return console.log(visita);    
+    return visita;  
 }
 
 // para buscar vehiculo
 function obtenerVehiculo (){
     const getVehicle = vehicle.value;
     let auto = vehiculos.find(vehiculo => vehiculo.placa === getVehicle)
-    //let addVehicle = access.push(auto)
     return auto;
 }
 
 //para borrar los estilos de la consulta
 function erase(){
-    //const eliminar = document.getElementById('access-container');
     const form = document.getElementById('form');
     eliminar.removeChild(form)
 }
 // para llenar con jquery
 function relleno (_e){
-    $("#permisos").append(`<section class="success"><h3>Resultado: Autorizado</h3>
+    $("#permisos").append(`<section class="success" ><h3>Resultado: Autorizado</h3>
     <p>Visitante: ${_e.nombre} ${_e.apellido}</p>
     <p>Documento N° ${_e.documento}</p>
     <p>Empresa: ${_e.empresa}</p>
@@ -118,7 +117,7 @@ function relleno (_e){
     <p>Pertenece a: ${_e.empresa_vehiculo}</p>
     </section>
     <section class="acceso">
-    <button class="button button--in" id="ingreso">Ingreso
+    <button class="button button--in" id="ingreso" onClick ="registro_ingreso()">Ingreso
     </button>
     <button class="button button--out" id="out">Salida
     </button>
@@ -140,16 +139,24 @@ function consultar_visitante (){
     return console.log(entradaJSON);
 }
 
-function ingrerar_visita(relleno){
-    //const eliminar = document.getElementById('access-container');
-    const permiso_ingreso = document.getElementById('permisos');
-    eliminar.removeChild(permiso_ingreso);
-    return function(){
-    const registro_ingreso = document.getElementById('ingreso');
-    registro_ingreso.addEventListener("click", )
+function registro_ingreso (){
+    let visitante = JSON.parse(localStorage.getItem("visitor"));
+    let nombre = visitante.nombre;
+    let apellido = visitante.apellido;
+    access_entrada.push(visitante);
+    console.log(access_entrada);
+    $( "#permisos" ).remove();
+    $("#acceso-visita").append(`<section class="success">
+    <h3>Bienvenido</h3>
+    <p>${nombre} ${apellido}</p>
+    <div>
+    <button class="button button--volver" id="volver">Regresar a Consulta
+    </button>
+     </div>
+    </section>`)
+
 }
-}
+
 
 check.addEventListener("click", on);
 consulta.addEventListener("click", consultar_visitante);
-registro_ingreso.addEventListener("click", ingresar_visita)
