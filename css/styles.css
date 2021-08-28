@@ -15,6 +15,9 @@ h1, h2, h3, h4, h5, h6 {
 p {
   line-height: 2em; }
 
+.none {
+  display: none; }
+
 @media only screen and (max-width: 600px) {
   .footer {
     display: flex;
@@ -234,6 +237,17 @@ input:disabled {
   margin-right: 15px;
   font-size: 16px; }
 
+.login__container--success {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.ingreso_autorizado {
+  background-color: #477e5fc2; }
+
+.salida__autorizada {
+  background-color: #b13e3ec4; }
+
 .success h3 {
   margin-top: 15px; }
 
@@ -290,7 +304,7 @@ input:disabled {
   height: 50px;
   letter-spacing: 1px;
   margin: 10px 0px;
-  background-color: #D83232;
+  background-color: #b13e3ec4;
   width: 120px; }
 
 .button--in {
@@ -305,7 +319,7 @@ input:disabled {
   height: 50px;
   letter-spacing: 1px;
   margin: 10px 0px;
-  background-color: #419E6A;
+  background-color: #477e5fc2;
   width: 120px; }
 
 .button--volver {

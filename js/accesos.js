@@ -71,6 +71,8 @@ const registrar = document.getElementById('registro');
 const consulta = document.getElementById('consulta');
 const eliminar = document.getElementById('access-container');
 
+const form = document.getElementById('form');
+
 
 // para habilitar si entra con vehiculo
 function on (){
@@ -87,7 +89,7 @@ function on (){
 function obtenerVisita (){
     const valorDocumento = documento.value;
     const visita = personas.find(persona => persona.documento === valorDocumento);
-    return visita;  
+    return visita;
 }
 
 // para buscar vehiculo
@@ -99,11 +101,10 @@ function obtenerVehiculo (){
 
 //para borrar los estilos de la consulta
 function erase(){
-    const form = document.getElementById('form');
-    eliminar.removeChild(form)
+    form.classList.add("none")
 }
 // para llenar con jquery
-function relleno (_e){
+function relleno_auto (_e){
     $("#permisos").append(`<section class="success" ><h3>Resultado: Autorizado</h3>
     <p>Visitante: ${_e.nombre} ${_e.apellido}</p>
     <p>Documento N° ${_e.documento}</p>
@@ -119,42 +120,100 @@ function relleno (_e){
     <section class="acceso">
     <button class="button button--in" id="ingreso" onClick ="registro_ingreso()">Ingreso
     </button>
-    <button class="button button--out" id="out">Salida
+    <button class="button button--out" id="out" onClick ="registro_salida()">Salida
     </button>
      </section>
      <div>
-    <button class="button button--volver" id="volver">Regresar a Consulta
+    <button class="button button--volver" id="volver" onClick ="estado_inicial()">Regresar a Consulta
     </button>
      </div>`);
 }
 
+function relleno_persona (_e){
+    $("#permisos").append(`<section class="success" ><h3>Resultado: Autorizado</h3>
+    <p>Visitante: ${_e.nombre} ${_e.apellido}</p>
+    <p>Documento N° ${_e.documento}</p>
+    <p>Empresa: ${_e.empresa}</p>
+    <p>SCTR vigente hasta: ${_e.fin_sctr}</p>
+    </section>
+    <section class="acceso">
+    <button class="button button--in" id="ingreso" onClick ="registro_ingreso()">Ingreso
+    </button>
+    <button class="button button--out" id="out" onClick ="registro_salida()">Salida
+    </button>
+     </section>
+     <div>
+    <button class="button button--volver" id="volver" onClick ="estado_inicial()">Regresar a Consulta
+    </button>
+     </div>`);
+}
+
+function relleno(_e){
+    if (check.checked == true){
+        return relleno_auto(_e);
+    } else relleno_persona(_e);
+}
+
+//Para mostrar lo que existe en la base de datos 
 function consultar_visitante (){
     let addPersona = obtenerVisita();
     let addAuto = obtenerVehiculo();
-    let entrada = {...addPersona, ...addAuto};
-    let entradaJSON = JSON.stringify(entrada);
-    localStorage.setItem('visitor', entradaJSON)
-    erase();
-    relleno(entrada);
-    return console.log(entradaJSON);
+    
+    if (addPersona !=null){
+        let entrada = {...addPersona, ...addAuto};
+        let entradaJSON = JSON.stringify(entrada);
+        localStorage.setItem('visitor', entradaJSON)
+        erase();
+        relleno(entrada);
+        return console.log(entradaJSON);
+    }   else alert("sorry bro")
 }
 
+//para registrar el ingreso de la persona
 function registro_ingreso (){
     let visitante = JSON.parse(localStorage.getItem("visitor"));
     let nombre = visitante.nombre;
     let apellido = visitante.apellido;
     access_entrada.push(visitante);
     console.log(access_entrada);
-    $( "#permisos" ).remove();
-    $("#acceso-visita").append(`<section class="success">
+    $( "#permisos" ).slideUp("slow")
+    $('permisos').addClass("none");
+    $("#acceso__visita").append(`<section>
     <h3>Bienvenido</h3>
     <p>${nombre} ${apellido}</p>
     <div>
-    <button class="button button--volver" id="volver">Regresar a Consulta
+    <button class="button button--volver" id="volver" onClick ="estado_inicial()">Regresar a Consulta
     </button>
      </div>
     </section>`)
+    $('.login').addClass('ingreso_autorizado')
+}
 
+//para registrar la salida de la persona
+function registro_salida (){
+    let visitante = JSON.parse(localStorage.getItem("visitor"));
+    let nombre = visitante.nombre;
+    let apellido = visitante.apellido;
+    access_salida.push(visitante);
+    console.log(access_salida);
+    $( "#permisos" ).slideUp("slow")
+    $('permisos').addClass("none");
+    $("#acceso__visita").append(`<section>
+    <h3>Muchas Gracias por tu visita</h3>
+    <p>${nombre} ${apellido}</p>
+    <div class=".login__container--success">
+    <button class="button button--volver" id="volver" onClick ="estado_inicial()">Regresar a Consulta
+    </button>
+     </div>
+    </section>`)
+    $('.login').addClass('salida__autorizada')
+}
+
+// para regresar al a ingresar los datos
+function estado_inicial(){
+    form.classList.remove("none");
+    permisos.classList.add('none');
+    acceso__visita.classList.add('none')
 }
 
 
