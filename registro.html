@@ -13,7 +13,7 @@
   </header>
     <section class="login__container">
         <h2>Registro del visitante</h2>
-        <form class="login__container--form">
+        <!-- <form class="login__container--form">
             <input class="input--login" type="text" placeholder="Tipo de Visitante" id="tipo-visita">
             <input class="input--login" type="text" placeholder="Nombres y Apellidos" id="nombre-visita">
             <input class="input--login" type="number" placeholder="RUC" id="ruc">
@@ -39,7 +39,19 @@
             <button type="button" class="button button--consulta" id="registrar">Registrar</button>
             <button class="button button--volver" id="volver">Retornar</button>
             
-        </form>
+        </form> -->
+        <div id="form__registro">
+            <form class="login__container--form" id="registro">
+                <input class="input--login" type="number" placeholder="Ingresa DNI" id="dni_visita">
+                <input class="input--login" type="number" placeholder="Ingresa RUC" id="ruc_empresa">
+
+                <button class="button--consulta" id="verificar" type="button" >Consultar</button>
+                <a href="./index.html"><button class="button button--volver" id="volver" >Retornar</button></a>
+            </form>
+        </div>
+        <div id="datos-registro">
+
+        </div>
     </section>
     <footer class="footer">
         <a href="/">Términos de Uso</a>
@@ -48,6 +60,6 @@
     </footer>
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
-    <script src="./js/registro.js"></script>
+    <script src="./js/registro.js" type="module"></script>
 </body>
 </html>
