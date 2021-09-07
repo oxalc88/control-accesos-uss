@@ -38,22 +38,26 @@ import {api_dni_ruc} from "./apikey.js";
 
 const formData_dni = new FormData();
 formData_dni.append("token", api_dni_ruc);
-formData_dni.append("dni", getVisita);
+formData_dni.append("dni", `"${getVisita}"`);
 
 
 const request_dni = new XMLHttpRequest();
+request_dni.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200){
+    let data_dni = JSON.parse(this.responseText);
+    console.log(data_dni)
+  }
+  
+};
+
 request_dni.open("POST", "https://api.migo.pe/api/v1/dni");
 request_dni.setRequestHeader("Accept", "application/json");
 request_dni.send(formData_dni);
 
-const consulta_dni = request_dni.onload = function() {
-let data_dni = JSON.parse(this.response);
-    return data_dni.nombre
-};
 
 const formData_ruc = new FormData();
 formData_ruc.append("token", api_dni_ruc);
-formData_ruc.append("ruc", getEmpresa);
+formData_ruc.append("ruc", `"${getEmpresa}"`);
 
 const request_ruc = new XMLHttpRequest();
 request_ruc.open("POST", "https://api.migo.pe/api/v1/ruc");
